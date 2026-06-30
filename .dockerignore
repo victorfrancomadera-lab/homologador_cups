@@ -1,0 +1,21 @@
+# Backend
+backend/.venv/
+backend/**/__pycache__/
+backend/*.db
+backend/*.log
+backend/*.err
+backend/frontend_dist/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Datos crudos y scripts (no se necesitan en runtime; los CSV ya estan en seed_data)
+data/
+*.pdf
+*.xlsx
+
+# Varios
+.git/
+.gitignore
+*.md

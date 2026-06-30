@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+backend/.venv/
+backend/*.db
+backend/*.log
+backend/*.err
+backend/frontend_dist/
+.env
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Datos fuente (grandes / sensibles) — los CSV procesados van en backend/seed_data
+data/output/
+*.pdf
+*.xlsx
+
+# Sistema
+.DS_Store
+Thumbs.db
