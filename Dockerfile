@@ -1,7 +1,9 @@
 # ---------- Etapa 1: compilar el frontend React ----------
-FROM node:20-alpine AS frontend
+FROM node:20-slim AS frontend
 WORKDIR /fe
-COPY frontend/package.json frontend/package-lock.json* ./
+# Solo el package.json: el lockfile se regenera dentro de Linux para obtener
+# los binarios nativos correctos de rollup/vite (evita el bug npm/cli#4828).
+COPY frontend/package.json ./
 RUN npm install
 COPY frontend/ ./
 RUN npm run build

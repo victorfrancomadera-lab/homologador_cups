@@ -9,6 +9,8 @@ backend/frontend_dist/
 # Frontend
 frontend/node_modules/
 frontend/dist/
+# Lockfile generado en Windows: se regenera dentro del contenedor Linux
+frontend/package-lock.json
 
 # Datos crudos y scripts (no se necesitan en runtime; los CSV ya estan en seed_data)
 data/
