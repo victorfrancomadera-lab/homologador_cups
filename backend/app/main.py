@@ -18,7 +18,15 @@ FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend_dist"
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    run_seed()  # crea tablas, carga datos y superadmin (idempotente)
+    # La siembra no debe impedir que la app arranque: si falla (p. ej. la base
+    # de datos aun no esta lista), se registra el error pero el servidor sigue
+    # vivo para responder el healthcheck. Reintentara sembrar en el proximo boot.
+    try:
+        run_seed()  # crea tablas, carga datos y superadmin (idempotente)
+    except Exception as exc:  # noqa: BLE001
+        import traceback
+        print("ERROR durante la siembra inicial:", exc)
+        traceback.print_exc()
     yield
 
 
